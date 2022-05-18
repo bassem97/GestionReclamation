@@ -25,7 +25,7 @@ public class User implements Serializable {
     private Date dateInscription;
     private NiveauScolaire niveauScolaire;
     private Specialite specialite;
-
+    private Sexe sexe;
     @Column(unique=true)
     private String email;
     private String password;
