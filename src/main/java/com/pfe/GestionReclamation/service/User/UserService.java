@@ -20,7 +20,8 @@ public class UserService implements IUserService, ICrudService<User, Long> {
 
     @Override
     public User add(User user) {
-        user.setRole(userRepository.findAll().size() == 0?"ADMIN":"INTERVENANT");
+        if(userRepository.findAll().size() == 0)
+            user.setRole("ADMIN");
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

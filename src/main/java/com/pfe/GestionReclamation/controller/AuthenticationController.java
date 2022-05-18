@@ -3,7 +3,6 @@ package com.pfe.GestionReclamation.controller;
 
 import com.pfe.GestionReclamation.Config.Security.SecurityConfig;
 import com.pfe.GestionReclamation.Config.Security.TokenProvider;
-import com.pfe.GestionReclamation.service.User.UserDetailsService;
 import com.pfe.GestionReclamation.service.User.UserService;
 import com.pfe.GestionReclamation.util.JwtRespone;
 import com.pfe.GestionReclamation.util.LoginModel;
@@ -16,13 +15,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 @Import(SecurityConfig.class)
 @RestController
 @CrossOrigin("*")
 @Slf4j
-@RequestMapping("/auth/")
+@RequestMapping("auth/")
 public class AuthenticationController {
 
     @Autowired

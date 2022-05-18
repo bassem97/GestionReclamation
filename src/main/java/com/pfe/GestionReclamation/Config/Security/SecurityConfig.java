@@ -1,5 +1,6 @@
 package com.pfe.GestionReclamation.Config.Security;
-import com.pfe.GestionReclamation.service.User.UserDetailsService;
+
+import com.pfe.GestionReclamation.service.User.UserServiceDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer{
     @Autowired
-    private UserDetailsService userServiceDetails;
+    private UserServiceDetails userServiceDetails;
 
     @Autowired
     private JwtAuthenticationFilter authenticationFilter;
@@ -38,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
-//                .antMatchers("/auth/login").permitAll()
+//                .antMatchers("/**").permitAll()
+                .antMatchers("/auth/login").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
