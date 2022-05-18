@@ -27,7 +27,7 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
             Reclamation  reclamation1   = reclamationRepository.findById(aLong).get();
             reclamation1.setMotif(reclamation.getMotif());
             reclamation1.setStatus(reclamation.getStatus());
-            reclamation1.setUser(reclamation.getUser());
+            reclamation1.setTraiteurUser(reclamation.getTraiteurUser());
             reclamation1.setDelegue(reclamation.isDelegue());
             return reclamationRepository.save(reclamation1);
         }

@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 @Entity
 @Getter
@@ -34,14 +33,23 @@ public class User implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUser")
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"ownerUser"})
     @ToString.Exclude
     private List<Reclamation> reclamations;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_traiteur")
+    @JsonIgnoreProperties({"traiteurUser"})
+    @ToString.Exclude
+    private List<Reclamation> reclamations_a_traiter;
+
+
 
 
     public User() {
         this.dateRecrutement = new Date();
         reclamations = new ArrayList<>();
+        reclamations_a_traiter = new ArrayList<>();
     }
 
     public User(String nom, String prenom, String email, String password, String role) {
@@ -52,6 +60,7 @@ public class User implements Serializable {
         this.password = password;
         this.role = role;
         reclamations = new ArrayList<>();
+        reclamations_a_traiter = new ArrayList<>();
     }
 
 }
