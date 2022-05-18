@@ -1,6 +1,11 @@
 package com.pfe.GestionReclamation.service.Reclamation;
 
 
-public interface IReclamationService {
+import java.util.List;
 
+public interface IReclamationService {
+    List<Result> getRecalamtionByMonth();
+    List<Result> getRecalamtionBySpecialite();
+
+    List<Result> getRecalamtionBySexe();
 }

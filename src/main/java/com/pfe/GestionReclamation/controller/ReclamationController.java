@@ -5,6 +5,7 @@ package com.pfe.GestionReclamation.controller;
 
 import com.pfe.GestionReclamation.model.Reclamation;
 import com.pfe.GestionReclamation.service.Reclamation.ReclamationService;
+import com.pfe.GestionReclamation.service.Reclamation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +45,21 @@ public class ReclamationController {
     public Reclamation findById(@PathVariable("id") Long id) {
         return reclamationService.findById(id);
     }
+
+    @GetMapping("getRecalamtionBySpecialite")
+    public List<Result> getRecalamtionBySpecialite() {
+        return reclamationService.getRecalamtionBySpecialite();
+    }
+    @GetMapping("getRecalamtionBySexe")
+    public List<Result> getRecalamtionBySexe() {
+        return reclamationService.getRecalamtionBySexe();
+    }
+
+    @GetMapping("getRecalamtionByMonth")
+    public List<Result> getRecalamtionByMonth() {
+        return reclamationService.getRecalamtionByMonth();
+    }
+
 
 
 }
