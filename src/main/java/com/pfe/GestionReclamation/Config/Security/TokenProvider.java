@@ -15,10 +15,10 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class    TokenProvider {
+public class TokenProvider {
 
     private long tokenHours;
-    private String SECRET_KEY= "secret";
+    private String SECRET_KEY= "kimajee";
 
     public long validityTime(){
 //        return 1000*60*180* this.tokenHours;

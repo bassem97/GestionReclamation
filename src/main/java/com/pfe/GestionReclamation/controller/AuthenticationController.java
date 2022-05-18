@@ -44,12 +44,15 @@ public class AuthenticationController {
 
     @PostMapping("login")
     public ResponseEntity<?> authenticate(@RequestBody LoginModel loginModel){
+
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginModel.getEmail(),
                         loginModel.getPassword()
                 )
         );
+
+
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginModel.getEmail());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final String token;

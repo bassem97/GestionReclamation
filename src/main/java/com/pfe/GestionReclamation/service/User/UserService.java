@@ -22,7 +22,6 @@ public class UserService implements IUserService, ICrudService<User, Long> {
     public User add(User user) {
         user.setRole(userRepository.findAll().size() == 0?"ADMIN":"INTERVENANT");
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
-        user.setEmail(user.getNom()+"."+user.getPrenom()+"@gmail.com");
         return userRepository.save(user);
     }
 
