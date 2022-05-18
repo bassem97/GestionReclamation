@@ -28,16 +28,14 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
     @Override
     public Reclamation update(Reclamation reclamation, Long aLong) {
         if (reclamationRepository.findById(aLong).isPresent()) {
-            if(reclamation.getStatus().name() == "VERIFIE"){
-                 emailService.sendSimpleMessage(reclamation.getOwnerUser().getEmail(),"A propos votre reclamation","votre reclamation a été verifié");
-            }
-
-
             Reclamation  reclamation1   = reclamationRepository.findById(aLong).get();
             reclamation1.setMotif(reclamation.getMotif());
             reclamation1.setStatus(reclamation.getStatus());
             reclamation1.setTraiteurUser(reclamation.getTraiteurUser());
             reclamation1.setDelegue(reclamation.isDelegue());
+            if(reclamation1.getStatus().name() == "VERIFIE"){
+                emailService.sendSimpleMessage(reclamation1.getOwnerUser().getEmail(),"A propos votre reclamation","votre reclamation a été verifié");
+            }
             return reclamationRepository.save(reclamation1);
         }
         return null;

@@ -57,6 +57,7 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.dateInscription = new Date();
         reclamations = new ArrayList<>();
         reclamations_a_traiter = new ArrayList<>();
     }
