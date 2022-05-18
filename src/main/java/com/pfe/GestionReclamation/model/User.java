@@ -22,7 +22,7 @@ public class User implements Serializable {
     private Long idUser;
     private String nom;
     private String prenom;
-    private Date dateRecrutement;
+    private Date dateInscription;
     private NiveauScolaire niveauScolaire;
     private Specialite specialite;
 
@@ -44,10 +44,8 @@ public class User implements Serializable {
     private List<Reclamation> reclamations_a_traiter;
 
 
-
-
     public User() {
-        this.dateRecrutement = new Date();
+        this.dateInscription = new Date();
         reclamations = new ArrayList<>();
         reclamations_a_traiter = new ArrayList<>();
     }
@@ -55,7 +53,7 @@ public class User implements Serializable {
     public User(String nom, String prenom, String email, String password, String role) {
         this.nom = nom;
         this.prenom = prenom;
-        this.dateRecrutement = new Date();
+        this.dateInscription = new Date();
         this.email = email;
         this.password = password;
         this.role = role;

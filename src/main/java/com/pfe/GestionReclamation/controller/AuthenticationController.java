@@ -3,6 +3,7 @@ package com.pfe.GestionReclamation.controller;
 
 import com.pfe.GestionReclamation.Config.Security.SecurityConfig;
 import com.pfe.GestionReclamation.Config.Security.TokenProvider;
+import com.pfe.GestionReclamation.service.Email.EmailService;
 import com.pfe.GestionReclamation.service.User.UserService;
 import com.pfe.GestionReclamation.util.JwtRespone;
 import com.pfe.GestionReclamation.util.LoginModel;
@@ -37,6 +38,8 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+
+
 //    @PostMapping("login/{isRemembered}")
 //    public ResponseEntity<?> authenticate(@RequestBody LoginModel loginModel, @PathVariable("isRemembered") boolean isRemembered) {
 //        return null;
@@ -44,7 +47,6 @@ public class AuthenticationController {
 
     @PostMapping("login")
     public ResponseEntity<?> authenticate(@RequestBody LoginModel loginModel){
-
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginModel.getEmail(),

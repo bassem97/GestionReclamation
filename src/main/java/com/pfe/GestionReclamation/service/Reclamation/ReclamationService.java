@@ -3,6 +3,7 @@ package com.pfe.GestionReclamation.service.Reclamation;
 
 import com.pfe.GestionReclamation.model.Reclamation;
 import com.pfe.GestionReclamation.repository.ReclamationRepository;
+import com.pfe.GestionReclamation.service.Email.EmailService;
 import com.pfe.GestionReclamation.service.ICrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
 
     @Autowired
     private ReclamationRepository reclamationRepository;
+    @Autowired
+    private EmailService emailService;
+
 
     @Override
     public Reclamation add(Reclamation reclamation) {
@@ -24,6 +28,11 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
     @Override
     public Reclamation update(Reclamation reclamation, Long aLong) {
         if (reclamationRepository.findById(aLong).isPresent()) {
+            if(reclamation.getStatus().name() == "VERIFIE"){
+                 emailService.sendSimpleMessage(reclamation.getOwnerUser().getEmail(),"A propos votre reclamation","votre reclamation a été verifié");
+            }
+
+
             Reclamation  reclamation1   = reclamationRepository.findById(aLong).get();
             reclamation1.setMotif(reclamation.getMotif());
             reclamation1.setStatus(reclamation.getStatus());
