@@ -17,6 +17,7 @@ public class Reclamation {
 	private long idReclamation;
     private String motif;
     private Status status;
+    private boolean delegue;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser")

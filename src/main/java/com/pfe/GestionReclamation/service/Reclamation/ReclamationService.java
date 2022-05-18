@@ -17,6 +17,7 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
 
     @Override
     public Reclamation add(Reclamation reclamation) {
+        reclamation.setDelegue(false);
         return reclamationRepository.save(reclamation);
     }
 
@@ -27,6 +28,7 @@ public class ReclamationService implements IReclamationService, ICrudService<Rec
             reclamation1.setMotif(reclamation.getMotif());
             reclamation1.setStatus(reclamation.getStatus());
             reclamation1.setUser(reclamation.getUser());
+            reclamation1.setDelegue(reclamation.isDelegue());
             return reclamationRepository.save(reclamation1);
         }
         return null;
