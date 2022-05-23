@@ -29,7 +29,7 @@ public class User implements Serializable {
     @Column(unique=true)
     private String email;
     private String password;
-    private String role;
+    private Role role;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUser")
@@ -50,7 +50,7 @@ public class User implements Serializable {
         reclamations_a_traiter = new ArrayList<>();
     }
 
-    public User(String nom, String prenom, String email, String password, String role) {
+    public User(String nom, String prenom, String email, String password, Role role) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateInscription = new Date();

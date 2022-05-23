@@ -1,5 +1,6 @@
 package com.pfe.GestionReclamation.service.User;
 
+import com.pfe.GestionReclamation.model.Role;
 import com.pfe.GestionReclamation.model.User;
 import com.pfe.GestionReclamation.repository.UserRepository;
 import com.pfe.GestionReclamation.service.ICrudService;
@@ -20,8 +21,8 @@ public class UserService implements IUserService, ICrudService<User, Long> {
 
     @Override
     public User add(User user) {
-        if(userRepository.findAll().size() == 0)
-            user.setRole("ADMIN");
+        if(userRepository.findAll().isEmpty())
+            user.setRole(Role.ADMIN);
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
