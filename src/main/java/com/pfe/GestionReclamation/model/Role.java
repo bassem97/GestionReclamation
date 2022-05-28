@@ -3,7 +3,7 @@ package com.pfe.GestionReclamation.model;
 
 
 public enum Role {
-	ELEVE,
+	ETUDIANT,
 	INTERVENANT,
 	ADMIN
 }

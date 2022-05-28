@@ -40,10 +40,8 @@ public class AuthenticationController {
 
 
 
-//    @PostMapping("login/{isRemembered}")
-//    public ResponseEntity<?> authenticate(@RequestBody LoginModel loginModel, @PathVariable("isRemembered") boolean isRemembered) {
-//        return null;
-//    }
+
+
 
     @PostMapping("login")
     public ResponseEntity<?> authenticate(@RequestBody LoginModel loginModel){

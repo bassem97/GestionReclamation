@@ -44,6 +44,8 @@ public class User implements Serializable {
     private List<Reclamation> reclamations_a_traiter;
 
 
+
+
     public User() {
         this.dateInscription = new Date();
         reclamations = new ArrayList<>();
